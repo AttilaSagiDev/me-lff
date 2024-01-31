@@ -1,0 +1,39 @@
+/**
+ * Copyright © 2016 Magevolve Ltd. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+.message.message-me-lff .content,
+.widget.message.message-me-lff .content {
+  background: #fff;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.message.message-me-lff #me-lff-progress-bar-holder,
+.widget.message.message-me-lff #me-lff-progress-bar-holder,
+.block-me-lff #me-lff-progress-bar-holder {
+  padding: 0 5px 0 0;
+}
+.message.message-me-lff #me-lff-progress-bar,
+.widget.message.message-me-lff #me-lff-progress-bar,
+.block-me-lff #me-lff-progress-bar {
+  width: 100%;
+  background-color: #e5efe5;
+  margin-bottom: 10px;
+}
+.message.message-me-lff #me-lff-bar,
+.widget.message.message-me-lff #me-lff-bar,
+.block-me-lff #me-lff-bar {
+  height: 5px;
+  width: 0%;
+  background-color: #006400;
+  text-align: center;
+  line-height: 5px;
+}
+.message.message-me-lff #me-lff-progress-bar-holder,
+.widget.message.message-me-lff #me-lff-progress-bar-holder {
+  padding: 0;
+}
+.message.message-me-lff #me-lff-progress-bar,
+.widget.message.message-me-lff #me-lff-progress-bar {
+  margin-bottom: 0;
+}

@@ -1,0 +1,55 @@
+<?php
+/**
+ * Copyright © 2016 Magevolve Ltd. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/* @var $block \Me\Lff\Block\Notification\LeftAmountInfo */
+?>
+<?php
+$helper = $block->getHelper();
+$price = $block->getAmountPrice();
+$priceInfo = $block->formatPrice($price) . ' ' . $block->getTaxSuffixInfo();
+$priceText = str_replace('"', '\"', $block->getPriceText($priceInfo));
+?>
+<?php if ($helper->isFreeShippingNotificationAvailable()) : ?>
+    <div id="me-lff" class="block block-compare block-me-lff" data-bind="scope: 'lff'">
+        <!-- ko if: (getShowBlock() || getShowSuccess()) -->
+            <div class="block-title">
+                <strong><span data-bind="html: getBlockTitle()"></span></strong>
+            </div>
+            <!-- ko if: getShowProgress() -->
+                <div id="me-lff-progress-bar-holder">
+                    <div id="me-lff-progress-bar" data-bind="html: getProgressBar()" style="display: none"></div>
+                </div>
+            <!-- /ko -->
+            <div class="block-content">
+                <!-- ko if: getShowSuccess() -->
+                    <span data-bind="html: getSuccessMessage()"></span>
+                <!-- /ko -->
+                <!-- ko if: getShowBlock() -->
+                    <span data-bind="html: getBlockPriceText()"></span>
+                <!-- /ko -->
+            </div>
+        <!-- /ko -->
+    </div>
+    <script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "lff": {
+                        "component": "Me_Lff/js/view/lff",
+                        "initPriceText" : "<?php /* @noEscape */ echo $priceText ?>",
+                        "initBlockTitle" : "<?php /* @noEscape */ echo $block->getBlockTitle() ?>",
+                        "initShowBlock" : "<?php echo ($price > 0) ? 1 : 0 ?>",
+                        "initShowSuccess" : "<?php echo (int)$block->getShowSuccessMessage($price) ?>",
+                        "initSuccessMessage" : "<?php /* @noEscape */ echo $helper->getSuccessMessage() ?>",
+                        "initProgress" : "<?php /* @noEscape */ echo $helper->isProgressBarEnabled() ?>"
+                    }
+                }
+            }
+        }
+    }
+    </script>
+<?php endif; ?>

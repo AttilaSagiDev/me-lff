@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magevolve Ltd. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="metab" translate="label" sortOrder="500">
+            <label>Magevolve Extensions</label>
+        </tab>
+        <section id="lff" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Free Shipping Remaining Cost</label>
+            <tab>metab</tab>
+            <resource>Me_Lff::lff</resource>
+            <group id="basic" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Basic</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Extension</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <backend_model>Me\Lff\Model\System\Config\Backend\Check</backend_model>
+                    <comment>Enable extension.</comment>
+                </field>
+            </group>
+            <group id="common" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Common</label>
+                <field id="taxinfo" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Tax Info</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable to show tax information. For example excluding or including tax in parentheses.</comment>
+                </field>
+                <field id="taxsuffix" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Price and Tax Display</label>
+                    <source_model>Me\Lff\Model\System\Config\Backend\Taxsuffix</source_model>
+                    <comment>Please select the tax information text to display after price. If automatic is selected the tax information text will depend on store settings.          </comment>
+                    <depends>
+                        <field id="taxinfo">1</field>
+                    </depends>
+                </field>
+                <field id="empty" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show if Cart is Empty</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable to show free shipping information text if the cart is empty.</comment>
+                </field>
+                <field id="show_success" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Success Message</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable to show the success message.</comment>
+                </field>
+                <field id="success_message" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Success Message</label>
+                    <comment>The success message if free shipping is available.</comment>
+                    <depends>
+                        <field id="show_success">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="cart" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Cart</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Notification on Cart Page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable to show notification on cart page.</comment>
+                </field>
+                <field id="notification" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Notification Text Cart Page</label>
+                    <comment>
+                        <![CDATA[The notification text which will be displayed on cart page. Please note that the "%s" will be replaced with the price, so you have to add it in the proper place within the text. You can use HTML tags also.]]></comment>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="progress" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Progress Indicator</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable to show progress indicator on cart page.</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="display" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Display</label>
+                <fieldset_css>complex</fieldset_css>
+                <frontend_model>Me\Lff\Block\Adminhtml\System\Config\Fieldset\Group</frontend_model>
+                <comment>You can customize the extension's position by using Widget.</comment>
+                <field id="title" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Block Title</label>
+                    <comment>The title of the sidebar's free shipping notification block.</comment>
+                </field>
+                <field id="block_notification" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Notification Text for Block</label>
+                    <comment>
+                        <![CDATA[The notification text which will be displayed in the block. Please note that the "%s" will be replaced with the price, so you have to add it in the proper place within the text. You can use HTML tags also.]]></comment>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="position" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show in Custom Position</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable to show free shipping information in custom position automatically.</comment>
+                </field>
+                <field id="progress" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Progress Indicator</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable to show progress indicator.</comment>
+                    <depends>
+                        <field id="position">1</field>
+                    </depends>
+                </field>
+                <field id="containers" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Select Container</label>
+                    <source_model>Me\Lff\Model\System\Config\Backend\Containers</source_model>
+                    <comment>Please select a container where free shipping notification block will be shown automatically.</comment>
+                    <depends>
+                        <field id="position">1</field>
+                    </depends>
+                    <validate>required-entry</validate>
+                </field>
+            </group>
+            <group id="extra" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Custom Amount</label>
+                <comment><![CDATA[<strong>Important!</strong> The custom amount option is recommended to work with third-party extensions free shipping methods setups or only for promotions. If you enable this functionality and your store doesn't use the default Magento Free Shipping method, this option won't handle the Free Shipping method automatically.]]></comment>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Custom Free Shipping Amount</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Please select yes, if you want to use a custom amount instead of the default Magento Free Shipping minimum order amount.</comment>
+                </field>
+                <field id="custom_amount" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Free Shipping Amount</label>
+                    <comment>
+                        <![CDATA[Please fill out the custom minimum order amount.]]></comment>
+                    <validate>required-entry validate-number validate-greater-than-zero</validate>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
