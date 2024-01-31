@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2016 Magevolve Ltd. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="me_lff_notification" class="Me\Lff\Block\Notification\Widget\Notification" is_email_compatible="true"
+            placeholder_image="Me_Lff::images/widget_lff.png">
+        <label translate="true">Free Shipping Remaining Cost</label>
+        <description translate="true">Widget to show how much money more user should spend to gain free shipping</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" visible="false">
+                <label translate="true">Block Title</label>
+                <description translate="true">The title of the free shipping notification block.</description>
+                <value>Free Shipping Info</value>
+            </parameter>
+            <parameter name="notification" xsi:type="text" visible="false">
+                <label translate="true">Notification Text</label>
+                <description translate="true"><![CDATA[The notification text which will be displayed. Please note that the "%s" will be replaced with the price, so you have to add it in the proper place within the text. You can use HTML tags also.]]></description>
+                <value><![CDATA[You need to add <strong>%s</strong> more to your cart, to gain free shipping.]]></value>
+            </parameter>
+            <parameter name="progress" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Show Progress Indicator</label>
+                <description translate="true">Enable to show progress indicator.</description>
+            </parameter>
+            <parameter name="template" xsi:type="select" required="true" visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="widget/lff_block.phtml" selected="true">
+                        <label translate="true">Notification Block Template</label>
+                    </option>
+                    <option name="message" value="widget/lff_message.phtml">
+                        <label translate="true">Notification Message Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

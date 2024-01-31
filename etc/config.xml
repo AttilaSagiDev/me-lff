@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magevolve Ltd. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <lff>
+            <basic>
+                <enabled>0</enabled>
+            </basic>
+            <common>
+                <taxinfo>0</taxinfo>
+                <empty>0</empty>
+                <show_success>0</show_success>
+                <success_message><![CDATA[Free shipping is available.]]></success_message>
+            </common>
+            <cart>
+                <enable>0</enable>
+                <notification><![CDATA[You need to add <strong>%s</strong> more to your cart, to gain free shipping.]]></notification>
+                <progress>0</progress>
+            </cart>
+            <display>
+                <sidebar>0</sidebar>
+                <empty>0</empty>
+                <title>Free Shipping Info</title>
+                <block_notification><![CDATA[You need to add <strong>%s</strong> more to your cart, to gain free shipping.]]></block_notification>
+                <progress>0</progress>
+            </display>
+        </lff>
+    </default>
+</config>
